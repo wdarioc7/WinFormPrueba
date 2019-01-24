@@ -29,6 +29,11 @@ namespace WinFormPrueba
         
         }
 
+        public object Generar()
+        {
+            throw new NotImplementedException();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
            
@@ -43,14 +48,17 @@ namespace WinFormPrueba
        public void button2_Click(object sender, EventArgs e)
         {
             int[] Path = new int[11] { 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1 };
-
+            if (textBox1.Text == "")
+            {
+                label4.Text = "Digita un valor";
+            }
             int Leap = Convert.ToInt32(textBox1.Text);
-            generar(Path,Leap);
+            Generar(Path,Leap);
            
         }
-        public void generar(int[] Path,int Leap)
+        public string Generar(int[] Path,int Leap)
         {
-           
+            string text = "";
             if (Leap <= 10)
             {
 
@@ -70,11 +78,13 @@ namespace WinFormPrueba
                 if (Convert.ToInt32(valor) == 1)
                 {
                     label4.Text = "!!!!!!!Felicitaciones Sobreviviste :) :)";
-
+                     text = label4.Text;
+                    
                 }
                 else if (Convert.ToInt32(valor) == 0)
                 {
                     label4.Text = "Lo siento No Sobreviviste :( :(";
+                    text = label4.Text;
 
                 }
 
@@ -83,6 +93,10 @@ namespace WinFormPrueba
             {
                 label5.Text = "El valor excede el rango del arreglo";
             }
+
+
+            return text;
+
         }
     }
 }
